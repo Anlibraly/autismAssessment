@@ -1,0 +1,141 @@
+<!--
+ - @author Anlibraly
+ - @class  测评页面
+ - time 2015-12-15
+ -->
+<!DOCTYPE html>
+<html ng-app="myQues">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" href="css/reset.css" />
+		<!-- <link rel="stylesheet" href="css/style.css" /> -->
+		<link rel="stylesheet" href="css/mobile.css" />
+		<script src="scripts/angular.min.js"></script>
+		<script src="controll/config.mobile.js"></script>
+		<script src="controll/quesdata.js"></script>
+		<script src="controll/question.js"></script>
+		<title>丽星</title>
+		<meta name="keywords" content="自闭症,孤独症,星星的孩子,自闭症社区,自闭症治疗" />
+		<meta name="description" content="自闭症检测，自闭症测试" />
+		<meta name="author" content="丽星" />
+		<link rel="stylesheet" href="css/asdtest_mobile.css" />
+	</head>
+	<body ng-controller="quesList">
+		<div class="wrap_mobile">
+			<div class="content_mobile">
+				<div id="info" class="test_info">
+					<h1>孤独症筛查</h1>
+					<p id="total_num" ng-if="totalmons<=30&&totalmons>0">共{{questions.length}}个问题<span>541</span>个人测试过</p>
+					<p id="total_num1" ng-if="totalmons==0"><span>541</span>个人测试过</p>
+					
+					<div start>
+						<img src="img/index_child.png">
+						<p style="font-size: 15.3px;color: #545454;">孤独症只能在早期干预，调查显示，家长很难在孩子3岁前发现异常。一旦耽搁，就是耽误一辈子。现在花5分钟做一个快速测试，初步判断孩子是否有患孤独症。</p>
+						<div class="start">
+							<span startbtn>开始测试</span>
+						</div>
+					</div>
+				</div>
+				<div style="display: none;" age>
+					<div id="light">
+						<a href="javascript:void(0)" id="closebt" style="float:right;font-size: 22px;" closeage><img src="img/close.png" style="width:23px;height:23px;"></a>
+						<div id="ages">
+							<span>请输入您孩子的年龄</span>
+							<div id="input_box">
+								<input type="number" name="years" ng-model="years"/>岁
+								<input type="number" name="mons" ng-model="mons" style="width: 25%;margin-left: 8%;"/>个月
+								<div ng-if="mons>12||mons<0" style="color:red;left:25%;position:absolute;top:26%;">月份应在0-12之间</div>
+								<div ng-if="years>=3" style="color:red;left:25%;position:absolute;top:26%;">该测评暂时只针对3岁以下儿童</div>
+								<div ng-if="years<0" style="color:red;left:27%;position:absolute;top:62%;">请输入合法年龄</div>
+							</div>
+						</div>
+						<div class="okay">
+							<span okay>确定</span>
+						</div>
+					</div> 
+					<div id="fade" fade></div> 	
+				</div>
+				<div style="display:none ;" ques>
+					<div class="test_content">
+						<h3>{{questions[num].ser}}.{{questions[num].desc}}</h3>
+						<div id="yes" class="radio_div" myradio>
+							<input id="radio_1" name="choice" type="radio" v="1" disabled/>
+							<label for="radio_1"><span>是</span></label>
+						</div>
+
+						<div id="no" class="radio_div" myradio>
+							<input id="radio_2" name="choice" type="radio" v="-1" disabled/>
+							<label for="radio_2"><span>否</span></label>
+						</div>
+					</div>
+					<div class="pre_next">
+						<span prepage>上一题</span>
+						<span style="background: #C4C4C4;padding: 3% 10.5%;border-color: #C4C4C4;" nextpage>提交</span>
+					</div>
+				</div>
+				<div id="result" style="display:none ;" result>
+					<div class="box"></div>	
+					<div id="reports">
+						<div id="result_title">
+							<span class="report">筛查报告</span>
+							<span class="share" ng-click="share()">分享结果</span>
+						</div>
+						<div id="special_list">
+							<div class="left_tra"></div>
+							<div class="right_tra"></div>
+							<div class="borders" borders><div class="win"></div></div>
+							<div class="special_count">有异常<span>{{special.length}}</span><i>项</i></div>
+							<ul ng-repeat="spc in special">
+								<li>{{spc.ser}}.{{spc.desc}}</li>
+							</ul>
+						</div>
+						<div id="nomal_list">
+							<div class="nomal_count">无异常<span>{{nomal.length}}</span><i>项</i></div>
+							<ul ng-repeat="nml in nomal">
+								<li>{{nml.ser}}.{{nml.desc}}</li>
+							</ul>
+						</div>
+					</div>
+					<img class="result_img" src="css/img/result.png"/>
+					<div id="light_result">
+						<div ng-if="score<3">
+							<div class="title">
+								<span>看起来不错</span>
+							</div>
+							<p>
+								您的孩子目前没有表现出明显的孤独症症状，但是通常在孩子2~3岁时才能确诊。
+								<br />
+								您可以每隔一段时间来排查一次。
+								<br />
+								您也可以预订免费提醒，我们会在合适的时间通知到您。
+							</p>
+							<div class="okay">
+								<span  noasd>点此预定</span>
+							</div>
+						</div>
+						<div ng-if="score>2">
+							<div class="title">
+								<span>情况不太好</span>
+							</div>
+							<p>您的孩子可能患有孤独症，建议您联系专家诊断，以获得更全面准确的评估报告。</p>
+							<div class="okay">
+								<span noasd>立即约见</span>
+							</div>
+						</div>
+					</div> 
+				</div>				
+			</div>	
+		</div>
+		
+<!-- 		<div class="nav_foot">
+			<ul>
+				<li><span class="nav_icon icon_home"></span><a href="./index.html">首页</a></li>
+				<li class="nav_on"><span class="nav_icon icon_news active"></span><a href="./postList.action?device=mobile&sortType=0&pageNum=1">资讯</a></li>
+				<li><span class="nav_icon icon_assessment"></span><a href="./assessment.action">筛查评估</a></li>
+				<li><span class="nav_icon icon_flarum"></span><a href="http://120.55.64.82/weonline/m/">社区</a></li>
+				<li><span class="nav_icon icon_about"></span><a href="./about_us.html">关于</a></li>
+			</ul>
+		</div> -->
+	</body>
+</html>

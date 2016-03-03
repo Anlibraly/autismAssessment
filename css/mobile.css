@@ -1,0 +1,176 @@
+/*底部菜单*/
+.wrap{
+	padding-bottom:50px;
+}
+.nav_foot{
+	width:100%;
+	height:49px;
+	margin: 0 auto;
+	border-top: 1px solid #eaeaea;
+	background-color:#FFF;
+	text-align: center;
+	position:fixed;
+	bottom:0;
+	z-index: 9;
+}
+.nav_foot.opa{
+	opacity:0.8;
+}
+.nav_foot li{
+	display:inline-block;
+	width:20%;
+	float:left;
+}
+.nav_foot a{
+	display:inline-block;
+	width:100%;
+	font-size:12px;
+	padding-top:30px;
+	color:#808080;
+}
+.nav_foot .nav_on a{
+	color:#339fff;
+}
+.nav_foot span{
+	display:block;
+	width:20px;
+	height:20px;
+	margin:0 auto;
+    margin-top: 7px;
+    overflow: hidden;
+    background-size:20px;
+    margin-bottom:-30px;
+}
+.nav_foot .nav_icon{
+	background-image:url('/autismsys/img/sprite.png');
+	background-repeat:no-repeat;
+}
+.nav_foot .icon_home{
+	background-position:0 0px;
+}
+.nav_foot .icon_home.active{
+	background-position:0 -25px;
+}
+.nav_foot .icon_news{
+	background-position:0 -145px;
+}
+.nav_foot .icon_news.active{
+	background-position:0 -167px;
+}
+.nav_foot .icon_assessment{
+	background-position:0 -100px;
+}
+.nav_foot .icon_assessment.active{
+	background-position:0 -123px;
+}
+.nav_foot .icon_flarum{
+	background-position:0 -211px;
+}
+.nav_foot .icon_about{
+	background-position:0 -75px;
+}
+.nav_foot .icon_about.active{
+	background-position:0 -50px;
+}
+/*底部 END*/
+/*首页*/
+.bg{
+	background:url(http://ac-6yiqo2t7.clouddn.com/fe953a9d6380d120b71f.jpg) no-repeat;
+	background-size:100%;
+}
+.index_bg{
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    bottom: 70px;
+}
+.index_bg img{
+	width:15%;
+}
+/*首页 End*/
+/*article */
+.postlist{
+	margin-top:10px;
+}
+.post{
+	position:relative;
+	border-top:1px solid #e2e2e2;
+}
+.post a{
+	display:block;
+	padding:12px 10px;
+	color:#434343;
+	overflow:hidden;
+	min-height:50px;
+	position:relative;
+}
+.post .tumbImg{
+	float:left;
+	position:relative;
+	margin-right:10px;
+	width:80px;
+	height:80px;
+	overflow:hidden;
+}
+
+.post .postInfo{
+	overflow:hidden;
+	position:relative;
+	height:80px;
+}
+.post .postInfo h3{
+	color:#434343;
+	font-size:16px;
+	font-weight:normal;
+	max-height:21px;
+	overflow:hidden;
+}
+.post p{
+	font-size:14px;
+	margin-top: 3px;
+	color:#979797;
+	max-height:40px;
+	min-height:30px;
+	overflow:hidden;
+}
+.post .clickNum{
+	font-size: 12px;
+	color: #d1d1d1;
+}
+/*article END*/
+/* about us */
+.abshade{
+	position: relative;
+}
+.abshade img{
+	display: block;
+}
+#contac_icon{
+	height: 50px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	margin:auto;
+}
+#contac_icon img{
+	height: 100%;
+    margin-left: 10%;
+}
+.aboutus_info{
+	padding-top: 33px ;
+	margin: 0 10px;
+	text-align:center;
+	padding-bottom:50px;
+}
+.aboutus_info h3{
+	font-size: 16px;
+	color: #434343;
+	margin-bottom: 10px;
+}
+.aboutus_info p{
+	font-size: 14px;
+	color: #434343;
+}
+/*about us END*/
